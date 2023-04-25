@@ -30,11 +30,17 @@ int main(int ac, char **av)
         _eputs(": 0: Can't open ");
         _eputs(av[1]);
         _eputchar(' ');
-   /*close */
       }
+      return (1);
     }
   }
 
-  return 0;
+  // using the info variable
+  for (int i = 0; i < sizeof(info)/sizeof(info[0]); i++)
+  {
+    _eputs(info[i].name);
+  }
+
+  return (0);
 }
 
