@@ -1,6 +1,6 @@
 #include "shell.h"
 
- 
+
 
 /**
 
@@ -23,7 +23,7 @@ info->argc = 0;
 
 }
 
- 
+
 
 /**
 
@@ -40,7 +40,7 @@ void set_info(info_t *info, char **av)
 {
 int i = 0;
 
- 
+
 
 info->fname = av[0];
 
@@ -52,7 +52,7 @@ info->argv = strtow(info->arg, " ");
 if (!info->argv)
 
 {
- 
+
 
 info->argv = malloc(sizeof(char *) * 2);
 
@@ -73,7 +73,7 @@ for (i = 0; info->argv && info->argv[i]; i++)
 
 info->argc = i;
 
- 
+
 
 replace_alias(info);
 
@@ -83,7 +83,7 @@ replace_vars(info);
 
 }
 
- 
+
 
 /**
 
