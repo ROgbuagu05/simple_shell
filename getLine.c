@@ -28,7 +28,7 @@ if (r > 0)
 {
 if ((*buf)[r - 1] == ' ')
 {
-(*buf)[r - 1] = ''; /* remove trailing newline */
+(*buf)[r - 1] = '\0'; /* remove trailing newline */
 r--;
 }
 info->linecount_flag = 1;
