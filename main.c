@@ -1,3 +1,9 @@
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "shell.h"
 
 /**
@@ -12,10 +18,7 @@ int main(int ac, char **av)
   info_t info[] = { INFO_INIT };
   int fd = 2;
 
-  asm ("mov %1, %0\n\t"
-       "add $3, %0"
-       : "=r" (fd)
-       : "r" (fd));
+  fd = 2;
 
   if (ac == 2)
   {
@@ -26,19 +29,20 @@ int main(int ac, char **av)
         exit(126);
       if (errno == ENOENT)
       {
-        _eputs(av[0]);
-        _eputs(": 0: Can't open ");
-        _eputs(av[1]);
-        _eputchar(' ');
+        puts(av[0]);
+        puts(": 0: Can't open ");
+        puts(av[1]);
+        putchar(' ');
       }
       return (1);
     }
   }
 
-  // using the info variable
-  for (int i = 0; i < sizeof(info)/sizeof(info[0]); i++)
+  /* using the info variable */
+  int i;
+  for (i = 0; i < sizeof(info)/sizeof(info_t); i++)
   {
-    _eputs(info[i].name);
+    puts(info[i].fname);
   }
 
   return (0);
